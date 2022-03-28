@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ONG, Ayuda un Peludo - Perros</title>
+    <meta author="marc.barrera@duocuc.cl" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container pt-5">
+      <div class="text-start">
+        <a href="index.html">Inicio</a> >
+        <a href="perros.html">Perros</a>
+      </div>
+      <!-- Content here -->
+      <h6 class="mt-3">ONG - AYUDA A UN PELUDO</h6>
+      <h1>Perro en Adopción</h1>
+      <p class="fs-6 mb-5">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nulla,
+        quidem totam saepe aliquam dolor cumque a quo quibusdam, eveniet ipsam
+        doloribus veritatis adipisci, magnam eius sunt exercitationem sequi
+        quis.
+      </p>
+      <h2>Nuestros Perros en busca de familia</h2>
+      <div class="row mt-5 mb-5">
+        <div class="col-6">
+          <img
+            src="images/dog1.png"
+            class="img-thumbnail"
+            alt="dog"
+            id="imagen"
+          />
+        </div>
+        <div class="col-6">
+          <ul class="list-group">
+            <li class="list-group-item">Nombre : <span id="nombre"></span></li>
+            <li class="list-group-item">Edad : <span id="edad"></span></li>
+            <li class="list-group-item">Género : <span id="genero"></span></li>
+            <li class="list-group-item">
+              Esterilizado : <span id="esterelizado"></span>
+            </li>
+            <li class="list-group-item">
+              Número de Chip : <span id="nchip"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      console.log("as", params.get("nombre"));
+      document.getElementById("nombre").innerHTML = params.get("nombre");
+      document.getElementById("edad").innerHTML = params.get("edad");
+      document.getElementById("genero").innerHTML = params.get("genero");
+      document.getElementById("esterelizado").innerHTML =
+        params.get("esterelizado");
+      document.getElementById("nchip").innerHTML = params.get("nchip");
+      document.getElementById("imagen").src =
+        "images/" + params.get("imagen") + ".png";
+    </script>
+  </body>
+</html>
