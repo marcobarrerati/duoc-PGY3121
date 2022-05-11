@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Empresa de Viajes</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <meta author="marc.barrera@duocuc.cl" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="imagenes/earth-americas-solid.svg"
+            alt=""
+            width="30"
+            height="24"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Inicio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#buscar">Buscar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#contacto">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#destinos">Destinos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#inicio-sesion"
+                >Inicio de Sesión</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="formulario.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aves.html">Aves de Chile</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <div class="row mb-5 pt-5">
+        <div class="col">
+          <h2 class="fs-5">Formulario de Contacto</h2>
+          <form>
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-6 col-sm-12">
+                    <div class="mb-5 card card-body">
+                      <h5 class="card-title fs-5 fw-bolder mb-3">
+                        Datos Personales
+                      </h5>
+                      <div class="row">
+                        <div class="col">
+                          <div class="mb-3">
+                            <label for="inpNombres" class="form-label fw-light"
+                              >Nombre Completo</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="inpNombres"
+                              aria-describedby="inpNombresHelp"
+                            />
+                            <div
+                              id="inpNombresHelp"
+                              class="form-text text-danger help"
+                            >
+                              Ingresa nombre y apellidos, mínimo 5 caractéres
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="inpRut" class="form-label fw-light"
+                              >RUT</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="inpRut"
+                              aria-describedby="rutHelp"
+                            />
+                            <div
+                              id="inpRutHelp"
+                              class="form-text text-danger help"
+                            >
+                              Ingresa un RUT valido
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="selectPais" class="form-label fw-light"
+                              >País</label
+                            >
+                            <select
+                              class="form-select"
+                              aria-label="Seleccionar País"
+                              name="selectPais"
+                              id="selectPais"
+                            >
+                              <option value="-1">Selecciona un País</option>
+                              <option value="1">País 1</option>
+                              <option value="2">País 2</option>
+                              <option value="3">País 3</option>
+                              <option value="4">País 4</option>
+                            </select>
+                            <div
+                              id="selectPaisHelp"
+                              class="form-text text-danger help"
+                            >
+                              Selecciona un País
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <label
+                              for="selectCiudad"
+                              class="form-label fw-light"
+                              >Ciudad</label
+                            >
+                            <select
+                              class="form-select"
+                              aria-label="Seleccionar Ciudad"
+                              name="selectCiudad"
+                              id="selectCiudad"
+                            >
+                              <option selected value="-1">
+                                Selecciona una Ciudad
+                              </option>
+                              <option value="1">Ciudad 1</option>
+                              <option value="2">Ciudad 2</option>
+                              <option value="3">Ciudad 3</option>
+                              <option value="4">Ciudad 4</option>
+                            </select>
+                            <div
+                              id="selectCiudadHelp"
+                              class="form-text text-danger help"
+                            >
+                              Selecciona una Ciudad
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="inpEmail" class="form-label fw-light"
+                              >Email</label
+                            >
+                            <input
+                              type="email"
+                              class="form-control"
+                              id="inpEmail"
+                              aria-describedby="emailHelp"
+                            />
+                            <div
+                              id="inpEmailHelp"
+                              class="form-text text-danger help"
+                            >
+                              Ingresa un Email valida
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="inpTelefono" class="form-label fw-light"
+                              >Teléfono</label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="inpTelefono"
+                              aria-describedby="telefonoHelp"
+                            />
+                            <div
+                              id="inpTelefonoHelp"
+                              class="form-text text-danger help"
+                            >
+                              Ingresa un Teléfono
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-12">
+                    <div class="mb-5 card card-body">
+                      <h5 class="card-title fs-5 fw-bolder mb-3">
+                        Información de Destino
+                      </h5>
+                      <div class="mb-3">
+                        <label
+                          class="form-check-label"
+                          for="selectCiudadDeOrigen"
+                        >
+                          Ciudad de Origen
+                        </label>
+                        <select
+                          class="form-select"
+                          aria-label="seleccionar ciudad de origen"
+                          id="selectCiudadDeOrigen"
+                          name="selectCiudadDeOrigen"
+                        >
+                          <option value="-1">
+                            Selecciona la ciuad de origen
+                          </option>
+                          <option value="Ciudad de Origen 1">
+                            Ciudad de Origen 1
+                          </option>
+                          <option value="Ciudad de Origen 2">
+                            Ciudad de Origen 2
+                          </option>
+                          <option value="Ciudad de Origen 3">
+                            Ciudad de Origen 3
+                          </option>
+                          <option value="Ciudad de Origen 4">
+                            Ciudad de Origen 4
+                          </option>
+                        </select>
+                        <div
+                          id="selectCiudadDeOrigenHelp"
+                          class="form-text text-danger help"
+                        >
+                          Selecciona una Ciudad de Origen
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label
+                          class="form-check-label"
+                          for="selectCiudadDeDestino"
+                        >
+                          Ciudad de Destino
+                        </label>
+                        <select
+                          class="form-select"
+                          aria-label="seleccionar ciudad de destino"
+                          id="selectCiudadDeDestino"
+                          name="selectCiudadDeDestino"
+                        >
+                          <option value="-1">
+                            Selecciona la ciuad de destino
+                          </option>
+                          <option value="Ciudad Destino 1">
+                            Ciudad Destino 1
+                          </option>
+                          <option value="Ciudad Destino 2">
+                            Ciudad Destino 2
+                          </option>
+                          <option value="Ciudad Destino 3">
+                            Ciudad Destino 3
+                          </option>
+                          <option value="Ciudad Destino 4">
+                            Ciudad Destino 4
+                          </option>
+                        </select>
+                        <div
+                          id="selectCiudadDeDestinoHelp"
+                          class="form-text text-danger help"
+                        >
+                          Selecciona una Ciudad de Destino
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="inpFecha" class="form-label fw-light"
+                          >Fecha</label
+                        >
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="inpFecha"
+                          aria-describedby="fechaHelp"
+                        />
+                        <div
+                          id="inpFechaHelp"
+                          class="form-text text-danger help"
+                        >
+                          Ingresa una Fecha
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="inpDias" class="form-label fw-light"
+                          >Días</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="inpDias"
+                          aria-describedby="diasHelp"
+                        />
+                        <div
+                          id="inpDiasHelp"
+                          class="form-text text-danger help"
+                        >
+                          Ingresa la Cantidad de Días, entre 1 y 20
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label
+                          for="inpCantidadDePasajeros"
+                          class="form-label fw-light"
+                          >Cantidad de Pasajeros</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="inpCantidadDePasajeros"
+                          aria-describedby="inpCantidadDePasajerosHelp"
+                        />
+                        <div
+                          id="inpCantidadDePasajerosHelp"
+                          class="form-text text-danger help"
+                        >
+                          Ingresa la Cantidad de Pasajeros, entre 1 y 10
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="inpPresupuesto" class="form-label fw-light"
+                          >Presupuesto</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="inpPresupuesto"
+                          aria-describedby="inpPresupuestoHelp"
+                        />
+                        <div
+                          id="inpPresupuestoHelp"
+                          class="form-text text-danger help"
+                        >
+                          Ingresa el presupuesto, entre 1 y 100000
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-5 card card-body">
+                      <h5 class="card-title fs-5 fw-bolder">Formas de Pago</h5>
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title fs-6 fw-bolder mb-3 mt-2">
+                            Modalidad de Pago
+                          </h5>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="radioModalidadDePago"
+                              id="radioModalidadDePagoTarjetaDeCredito"
+                              checked
+                            />
+                            <label
+                              class="form-check-label"
+                              for="radioModalidadDePagoTarjetaDeCredito"
+                            >
+                              Tarjeta de Crédito
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="radioModalidadDePago"
+                              id="radioModalidadDePagoPayPal"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="radioModalidadDePagoPayPal"
+                            >
+                              Paypal
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="radioModalidadDePago"
+                              id="radioModalidadDePagoTransferencia"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="radioModalidadDePagoTransferencia"
+                            >
+                              Transferencia
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <h5 class="card-title fs-6 fw-bolder mb-3 mt-2">
+                            Moneda de Pago
+                          </h5>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="radioMonedaDePago"
+                              id="radioMonedaDePagoUSD"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="radioMonedaDePagoUSD"
+                            >
+                              USD
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="radioMonedaDePago"
+                              id="radioMonedaDePagoCLP"
+                              checked
+                            />
+                            <label
+                              class="form-check-label"
+                              for="radioMonedaDePagoCLP"
+                            >
+                              CLP
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-5 card card-body">
+                      <h5 class="card-title fs-5 fw-bolder mb-3">
+                        Medio de Contacto
+                      </h5>
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              name="checkboxMedioDeContactoEmail"
+                              id="checkboxMedioDeContactoEmail"
+                              value="email"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="checkboxMedioDeContactoEmail"
+                            >
+                              Email
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              name="checkboxMedioDeContactoTelefono"
+                              id="checkboxMedioDeContactoTelefono"
+                              value="telefono"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="checkboxMedioDeContactoTelefono"
+                            >
+                              Teléfono, 9 números
+                            </label>
+                          </div>
+                          <div
+                            id="medioDeContactoHelp"
+                            class="form-text text-danger help"
+                          >
+                            Selecciona uno o más medios de contacto
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-5 card card-body">
+                      <h5 class="card-title fs-5 fw-bolder mb-3">Comentario</h5>
+                      <div class="mb-3">
+                        <textarea
+                          class="form-control"
+                          placeholder="Ingresar un comentario"
+                          id="textareaComentario"
+                          name="textareaComentario"
+                          style="height: 100px"
+                        ></textarea>
+                        <div class="form-text text-success">
+                          Caractéres ingresados
+                          <span id="textareaComentarioContador"></span>
+                        </div>
+                        <div
+                          id="textareaComentarioHelp"
+                          class="form-text text-danger help"
+                        >
+                          Ingresa un comentario, mínimo 50 carácteres
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3 text-center">
+                      <button type="submit" class="btn btn-primary">
+                        ENVIAR
+                      </button>
+                      <div class="alert alert-danger mt-5" role="alert">
+                        <span id="alertDanger"></span>
+                      </div>
+                      <div class="alert alert-success mt-5" role="success">
+                        <span id="alertSuccess"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.js"
+      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="js/main.js" type="text/javascript"></script>
+
+    <script>
+      $("document").ready((_) => {
+        $(".help, .alert-danger, .alert-success").hide();
+
+        // comentarios
+        $("#textareaComentarioContador").html("0");
+        $("#textareaComentario").keyup((_) => {
+          $("#textareaComentarioContador").html(
+            $("#textareaComentario").val().length
+          );
+        });
+
+        $("form").submit(function (event) {
+          event.preventDefault();
+          contador = 0;
+          $(".help, .alert-danger, .alert-success").hide();
+
+          // Nombres y apellidos
+          if ($("#inpNombres").val().trim().length <= 5) {
+            $("#inpNombresHelp").show();
+            contador++;
+          }
+          // RUT: requerido y debe ser válido
+          if (!validarRut($("#inpRut").val())) {
+            $("#inpRutHelp").show();
+            contador++;
+          }
+          // País
+          if (parseInt($("#selectPais").val()) == -1) {
+            $("#selectPaisHelp").show();
+            contador++;
+          }
+          // Ciudad
+          if (parseInt($("#selectCiudad").val()) == -1) {
+            $("#selectCiudadHelp").show();
+            contador++;
+          }
+          // Email
+          if ($("#inpEmail").val().trim().length == 0) {
+            $("#inpEmailHelp").show();
+            contador++;
+          }
+          // Teléfono
+          if (
+            $("#inpTelefono").val().trim().length < 9 ||
+            $("#inpTelefono").val().trim().length > 9
+          ) {
+            $("#inpTelefonoHelp").show();
+            contador++;
+          }
+
+          // ciudad de origen
+          if (parseInt($("#selectCiudadDeOrigen").val()) == -1) {
+            $("#selectCiudadDeOrigenHelp").show();
+            contador++;
+          }
+          // Ciudad de destino
+          if (parseInt($("#selectCiudadDeDestino").val()) == -1) {
+            $("#selectCiudadDeDestinoHelp").show();
+            contador++;
+          }
+
+          // fecha
+          if ($("#inpFecha").val().trim().length == 0) {
+            $("#inpFechaHelp").show();
+            contador++;
+          }
+
+          // Días
+          if ($("#inpDias").val().trim().length == 0) {
+            $("#inpDiasHelp").show();
+            contador++;
+          } else if (
+            parseInt($("#inpDias").val().trim()) < 0 ||
+            parseInt($("#inpDias").val().trim()) > 20
+          ) {
+            $("#inpDiasHelp").show();
+            contador++;
+          }
+          // Cantidad de Pasajeros
+          if ($("#inpCantidadDePasajeros").val().trim().length == 0) {
+            $("#inpCantidadDePasajerosHelp").show();
+            contador++;
+          } else if (
+            parseInt($("#inpCantidadDePasajeros").val().trim()) < 0 ||
+            parseInt($("#inpCantidadDePasajeros").val().trim()) > 10
+          ) {
+            $("#inpCantidadDePasajerosHelp").show();
+            contador++;
+          }
+          // Presupuesto
+          if ($("#inpPresupuesto").val().trim().length == 0) {
+            $("#inpPresupuestoHelp").show();
+            contador++;
+          } else if (
+            parseInt($("#inpPresupuesto").val().trim()) < 0 ||
+            parseInt($("#inpPresupuesto").val().trim()) > 100000
+          ) {
+            $("#inpPresupuestoHelp").show();
+            contador++;
+          }
+          // medio de contacto
+          if (
+            !$("#checkboxMedioDeContactoEmail")[0].checked &&
+            !$("#checkboxMedioDeContactoTelefono")[0].checked
+          ) {
+            $("#medioDeContactoHelp").show();
+            contador++;
+          }
+          // comentario
+          if ($("#textareaComentario").val().trim().length < 50) {
+            $("#textareaComentarioHelp").show();
+            contador++;
+          }
+
+          if (contador > 0) {
+            $(".alert-danger").show();
+            $("#alertDanger").html("corregir los errores");
+          } else if (contador == 0) {
+            $(".alert-success").show();
+            $("#alertSuccess").html(
+              "<h2>Estos son los datos que enviaremos al servicio REST</h2><code>" +
+                JSON.stringify($(this).serializeArray()) +
+                "</code>"
+            );
+          } else {
+            $("#alertDanger").html("otro error");
+          }
+
+          event.preventDefault();
+        });
+      });
+    </script>
+  </body>
+</html>
