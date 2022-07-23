@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador</title>
+    <!--bootstrap js-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      .card {
+        margin-top: 15vh;
+      }
+    </style>
+  </head>
+  <body class="bg-warning text-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Inicio de sesión</h5>
+              <div class="input-group mt-4 input-group-sm">
+                <span class="input-group-text" id="addon-wrapping"
+                  ><i class="fa-solid fa-user"></i
+                ></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Usuario"
+                  aria-label="usuario"
+                  aria-describedby="addon-wrapping"
+                  id="inp_user"
+                />
+              </div>
+              <div class="input-group mt-4 input-group-sm">
+                <span class="input-group-text" id="addon-wrapping"
+                  ><i class="fa-solid fa-key"></i
+                ></span>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Contraseña"
+                  aria-label="contraseña"
+                  aria-describedby="addon-wrapping"
+                  id="inp_password"
+                />
+              </div>
+              <div class="mt-5 text-end">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  id="btn_init"
+                >
+                  Ingresar
+                </button>
+              </div>
+            </div>
+            <div class="card-footer">
+              <p id="mensaje" class="text-danger fs-6 fw-light"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--bootsrap js-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      const btn_inicio = document.getElementById("btn_init");
+      const inp_usuario = document.getElementById("inp_user");
+      const inp_pass = document.getElementById("inp_password");
+
+      const objUserDTO = {
+        username: "",
+        password: "",
+      };
+
+      btn_inicio.addEventListener("click", () => {
+        mensaje.innerHTML = "";
+        let _mensaje = "";
+
+        // validar que ingresen un usuario
+        if (inp_usuario.value.trim().length == 0) {
+          _mensaje = "ingresa un nombre de usuario";
+        } else {
+          objUserDTO.username = inp_usuario.value.trim();
+        }
+
+        // validar que ingresen una contraseña
+        if (inp_pass.value.trim().length == 0) {
+          _mensaje += "<br>ingresa una contraseña de usuario";
+        } else {
+          objUserDTO.password = inp_pass.value.trim();
+        }
+
+        if (_mensaje.trim().length == 0) {
+          $.ajax({
+            url: api + "token/",
+            type: "POST",
+            data: JSON.stringify(objUserDTO),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: (resp) => {
+              localStorage.setItem("access", resp.access);
+              localStorage.setItem("refresh", resp.refresh);
+              localStorage.setItem("username", objUserDTO.username);
+              location.href = "dashboard.html";
+            },
+            error: (erro) => {
+              console.log("error,", erro.responseJSON.detail);
+              mensaje.innerHTML = erro.responseJSON.detail;
+            },
+          });
+        } else {
+          mensaje.innerHTML = _mensaje;
+        }
+      });
+    </script>
+  </body>
+</html>
