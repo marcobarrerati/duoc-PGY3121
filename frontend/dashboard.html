@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!--bootstrap js-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body class="bg-warning text-dark">
+    <div class="container">
+      <div class="row pt-5">
+        <div class="col-lg-4">
+          <div class="card shadow-lg bg-body rounded">
+            <div class="card-body">
+              <h1 id="_username" class="fs-5"></h1>
+              <div class="text-end">
+                <button onclick="sesionOff()" class="btn btn-danger btn-sm">
+                  Cerrar Sesión
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-5">
+        <div class="col-lg-4">
+          <div class="card shadow-lg bg-body rounded">
+            <div class="card-body">
+              <h1 class="card-title fs-4">Vehículos</h1>
+              <button
+                type="button"
+                class="btn btn-primary btn-sm mt-5"
+                data-bs-toggle="modal"
+                data-bs-target="#modalVehicleModel"
+              >
+                Modelos
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary btn-sm mt-5"
+                data-bs-toggle="modal"
+                data-bs-target="#modalVehicleCategory"
+              >
+                Categorías
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary btn-sm mt-5"
+                data-bs-toggle="modal"
+                data-bs-target="#modalVehicleVehicle"
+              >
+                Vehículos
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card shadow-lg bg-body rounded">
+            <div class="card-body">
+              <ul class="list-group">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-start"
+                >
+                  <div class="ms-2 me-auto">Modelos</div>
+                  <span
+                    class="badge bg-primary rounded-pill"
+                    id="_modelos_count"
+                  ></span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-start"
+                >
+                  <div class="ms-2 me-auto">Categorías</div>
+                  <span
+                    class="badge bg-primary rounded-pill"
+                    id="_categorias_count"
+                  ></span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-start"
+                >
+                  <div class="ms-2 me-auto">Vehículos</div>
+                  <span
+                    class="badge bg-primary rounded-pill"
+                    id="_vehicles_count"
+                  ></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---vehículos : modelos-->
+    <div
+      class="modal fade"
+      id="modalVehicleModel"
+      tabindex="-1"
+      aria-labelledby="modalVehicleModel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalVehicleModel">
+              Modelos de Vehículos
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card mt-5 shadow-lg p-3 mb-5 bg-body rounded">
+                  <div class="card-body">
+                    <h5 class="card-title">Nuevo</h5>
+                    <div class="input-group input-group-sm mt-4">
+                      <span class="input-group-text" id="addon-wrapping"
+                        ><i class="fa-solid fa-car"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="nombre del modelo"
+                        aria-label="modelo"
+                        aria-describedby="addon-wrapping"
+                        id="model_inp_name"
+                      />
+                    </div>
+                    <div class="mt-5 text-end">
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-sm"
+                        onclick="model_add();"
+                      >
+                        registrar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card mt-5 shadow-lg p-3 mb-5 bg-body rounded">
+                  <div class="card-body">
+                    <table class="table table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Nombre</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="model_tbl_body"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col pt-5">
+                <div id="model_msg" class="alert" role="alert"></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--vehículos : categorías -->
+    <div
+      class="modal fade"
+      id="modalVehicleCategory"
+      tabindex="-1"
+      aria-labelledby="modalVehicleCategory"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalVehicleCategory">
+              Categorías de Vehículos
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card mt-5 shadow-lg p-3 mb-5 bg-body rounded">
+                  <div class="card-body">
+                    <h5 class="card-title">Nueva</h5>
+                    <div class="input-group input-group-sm mt-4">
+                      <span class="input-group-text" id="addon-wrapping"
+                        ><i class="fa-solid fa-car"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="nombre del categoría"
+                        aria-label="categoryo"
+                        aria-describedby="addon-wrapping"
+                        id="category_inp_name"
+                      />
+                    </div>
+                    <div class="mt-5 text-end">
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-sm"
+                        onclick="category_add();"
+                      >
+                        registrar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card mt-5 shadow-lg p-3 mb-5 bg-body rounded">
+                  <div class="card-body">
+                    <table class="table table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Nombre</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="category_tbl_body"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col pt-5">
+                <div id="category_msg" class="alert" role="alert"></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- vechículos : vehículos-->
+    <div
+      class="modal fade"
+      id="modalVehicleVehicle"
+      tabindex="-1"
+      aria-labelledby="modalVehicleVehicle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalVehicleVehicle">Vehículos</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card mt-5 shadow-lg p-3 mb-5 bg-body rounded">
+                  <div class="card-body">
+                    <h5 class="card-title">Nueva</h5>
+                    <div class="input-group input-group-sm mt-4">
+                      <span class="input-group-text" id="addon-wrapping"
+                        ><i class="fa-solid fa-car"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="patente"
+                        aria-label="marca"
+                        aria-describedby="addon-wrapping"
+                        id="vehicle_inp_patent"
+                      />
+                    </div>
+                    <div class="input-group input-group-sm mt-4">
+                      <span class="input-group-text" id="addon-wrapping"
+                        ><i class="fa-solid fa-car"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="marca"
+                        aria-label="marca"
+                        aria-describedby="addon-wrapping"
+                        id="vehicle_inp_brand"
+                      />
+                    </div>
+                    <div class="input-group input-group-sm mt-4">
+                      <span class="input-group-text" id="addon-wrapping"
+                        ><i class="fa-solid fa-car"></i
+                      ></span>
+                      <select
+                        class="form-select form-select-sm"
+                        aria-label=".form-select-sm example"
+                        id="vehicle_inp_model"
+                      >
+                        <option selected>Selecciona un modelo</option>
+                      </select>
+                    </div>
+                    <div class="input-group input-group-sm mt-4">
+                      <span class="input-group-text" id="addon-wrapping"
+                        ><i class="fa-solid fa-car"></i
+                      ></span>
+                      <select
+                        class="form-select form-select-sm"
+                        aria-label=".form-select-sm example"
+                        id="vehicle_inp_category"
+                      >
+                        <option selected>Selecciona una categoría</option>
+                      </select>
+                    </div>
+
+                    <div class="mt-5 text-end">
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-sm"
+                        onclick="vehicle_add();"
+                      >
+                        registrar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card mt-5 shadow-lg p-3 mb-5 bg-body rounded">
+                  <div class="card-body">
+                    <table class="table table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th scope="col">Patente</th>
+                          <th scope="col">Marca</th>
+                          <th scope="col">Modelo</th>
+                          <th scope="col">Categoría</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="vehicle_tbl_body"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col pt-5">
+                <div id="vehicle_msg" class="alert" role="alert"></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/vehicle_model.js"></script>
+    <script src="js/vehicle_category.js"></script>
+    <script src="js/vehicle_vehicle.js"></script>
+
+    <script>
+      document.getElementById("_username").innerHTML = `@${localStorage.getItem(
+        "username"
+      )}`;
+    </script>
+  </body>
+</html>
