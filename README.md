@@ -2,7 +2,6 @@
 
 # PGY3121 - Programación WEB
 
-marc.barrera@duocuc.cl
 
 - [Actividad 01](actividad-1/README.md)
 - [Actividad 03](actividad-3/README.md)
